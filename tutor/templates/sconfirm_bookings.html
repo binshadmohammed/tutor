@@ -1,0 +1,73 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    
+            <!-- Class Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Home Tutor</span></p>
+                <h1 class="mb-4">My Confirmed Bookings</h1>
+            </div>
+            <div class="row">
+                {% for i in con %}
+
+                <div class="col-lg-4 mb-5">
+                    <div class="card border-0 bg-light shadow-sm pb-2">
+                        <img class="card-img-top mb-2" src="img/class-1.jpg" alt="">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{i.tname}}</h4>
+                            <h4 class="card-title">{{i.subject}}</h4>
+                            <!-- <p class="card-text">Justo ea diam stet diam ipsum no sit, ipsum vero et et diam ipsum duo et no et, ipsum ipsum erat duo amet clita duo</p> -->
+                        </div>
+                        <div class="card-footer bg-transparent py-4 px-5">
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Teacher place</strong></div>
+                                <div class="col-6 py-1">{{i.tplace}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Mobile No</strong></div>
+                                <div class="col-6 py-1">{{i.tmobile}}</div>
+                            </div>
+                            
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Date</strong></div>
+                                <div class="col-6 py-1">{{i.date}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>starting Time</strong></div>
+                                <div class="col-6 py-1">{{i.s_time}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Ending Time</strong></div>
+                                <div class="col-6 py-1">{{i.e_time}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Topic</strong></div>
+                                <div class="col-6 py-1">{{i.topic}}</div>
+                            </div>
+                            
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Tution Fee</strong></div>
+                                <div class="col-6 py-1">${{i.tfee}}/ hour</div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-6 py-1 text-right border-right"><strong>Status</strong></div>
+                                <div class="col-6 py-1" style="color: green;">{{i.status}}</div>
+                            </div>
+                        </div>
+                        <a href="{% url 'student_cancel' id=i.id %}" class="btn btn-primary px-4 mx-auto mb-4" style="background-color: red;">Cancel</a>
+                    </div>
+                </div>
+               
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!-- Class End -->
+                
+
+{% include 'footer.html' %}
+{% endblock %}

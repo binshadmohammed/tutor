@@ -1,0 +1,53 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5" align="center">
+                
+                <div class="" style="width: 70vh;">
+                    <div class="card border-0">
+                        <div class="card-header bg-secondary text-center p-4">
+                            <h1 class="text-white m-0">Student Sign-Up</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <form method="POST" action="studentsreg">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="name" placeholder="Your Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="age" placeholder="Your Age" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="sclass"  placeholder="Your class" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="place"  placeholder="Your Place" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control border-0 p-4" name="email"  placeholder="Your Email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control border-0 p-4" name="password1"  placeholder="Password" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control border-0 p-4" name="password2"  placeholder="Conform Password" required="required" />
+                                </div>
+                                {% for message in messages %}
+                                 <p style="text-align: center; font-size: larger; color: red;">{{message}}</p>
+                                {% endfor %}
+                                <div>
+                                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Book Now</button>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+ 
+    </div>
+    <!-- Registration End -->
+
+{% include 'footer.html' %}
+{% endblock %}

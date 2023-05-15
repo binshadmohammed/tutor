@@ -1,0 +1,30 @@
+
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+
+ <!-- Facilities Start -->
+ <div class="container-fluid pt-5">
+    <div class="container pb-3">
+        <div class="row">
+            {% for i in cmt %}
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                    <i class="flaticon-019-pencil h1 font-weight-normal text-primary mb-3"></i>
+                    <div class="pl-4">
+                        <h4>{{i.name}}</h4>
+                        <p>{{i.sdate}}</p>
+                        <p class="m-0">{{i.message}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Facilities Start -->
+
+
+{% include 'footer.html' %}
+{% endblock %}

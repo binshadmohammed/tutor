@@ -1,0 +1,80 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5" align="center">
+        
+                <div class="col-lg-5" >
+                    <div class="card border-0">
+                        <div class="card-header bg-secondary text-center p-4">
+                            <h1 class="text-white m-0">Booking Page</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <form method="POST" action="bbook_teacher">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.id}}" name="t_id" placeholder="Your Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.subject}}" name="subject"  placeholder="Your subject" required="required" />
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.name}}" name="tname"  placeholder="Your subject" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.fee}}" name="tfee"  placeholder="Your subject" required="required" />
+                                </div><div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.place}}" name="tplace"  placeholder="Your subject" required="required" />
+                                </div><div class="form-group">
+                                    <input type="hidden" class="form-control border-0 p-4" value="{{book.mobile}}" name="tmobile"  placeholder="Your subject" required="required" />
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="name" placeholder="Your Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="address" placeholder="address" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="place"  placeholder="place" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="sclass"  placeholder="class" required="required" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="topic"  placeholder="topic" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" name="mobile"  placeholder="mobile number" required="required" />
+                                </div>
+                                <span style="color: rgb(28, 28, 46);">Choose Your Date</span>
+                                <div class="form-group">
+                                    <input type="date" class="form-control border-0 p-4" name="date"  placeholder="date" min="{{today}}" required="required" />
+                                </div>
+                                <span style="color: rgb(28, 28, 46);">Starting time</span>
+                                <div class="form-group">
+                                    <input type="time" class="form-control border-0 p-4" name="s_time"  placeholder="starting time" required="required" />
+                                </div>
+                                <span style="color: rgb(28, 28, 46);">Ending time</span>
+                                <div class="form-group">
+                                    <input type="time" class="form-control border-0 p-4" name="e_time"  placeholder="ending time" required="required" />
+                                </div>
+                                <div>
+                                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Book</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+    </div>
+    <!-- Registration End -->
+
+{% include 'footer.html' %}
+{% endblock %}

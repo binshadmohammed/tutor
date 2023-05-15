@@ -1,0 +1,69 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+   
+   
+   <!-- Class Start -->
+    <div class="container-fluid pt-5" >
+ 
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Tyooto</span></p>
+                <h1 class="mb-4">MY Profile</h1>
+            </div>
+          <div align="center">
+                <div class=" "style="width: 80vh;"   >
+                    <div class="card border-0 bg-light shadow-sm pb-2" >
+                        <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%; margin-top: 20px;">
+                           <img class="img-fluid " src="{{t.image.url}}" alt="image" style="width: 200px;">
+                        </div>
+                        <a href="{% url 't_image' id=t.id %}">Edit Image</a> 
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{t.name}}</h4>
+                            <!-- <p class="card-text">Justo ea diam stet diam ipsum no sit, ipsum vero et et diam ipsum duo et no et, ipsum ipsum erat duo amet clita duo</p> -->
+                        </div>
+                        <div class="card-footer bg-transparent py-4 px-5">
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Email </strong></div>
+                                <div class="col-6 py-1">{{t.email}}</div>
+                            </div>
+                            
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Age </strong></div>
+                                <div class="col-6 py-1">{{t.age}} Years</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Place</strong></div>
+                                <div class="col-6 py-1">{{t.place}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Subject</strong></div>
+                                <div class="col-6 py-1">{{t.subject}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Qualification</strong></div>
+                                <div class="col-6 py-1">{{t.qualification}} </div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Experiance</strong></div>
+                                <div class="col-6 py-1">{{t.experience}} Years</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6 py-1 text-right border-right"><strong>Status</strong></div>
+                                <div class="col-6 py-1">{{t.approvedsts}} Years</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 py-1 text-right border-right"><strong>Tution Fee</strong></div>
+                                <div class="col-6 py-1">${{t.fee}} / Hour</div>
+                            </div>
+                        </div>
+
+                      
+                        <a href="{% url 'teacher_uprofile' id=t.id %}" class="btn btn-primary px-4 mx-auto mb-4">Edit</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- Class End -->
+
+{% include 'footer.html' %}
+{% endblock %}

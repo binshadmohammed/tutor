@@ -1,0 +1,75 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5">
+        <div class="container align-items-center">
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-secondary text-center p-4">
+                            <h1 class="text-white m-0">Update Profile</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <form method="POST" action="teacher_uuprofile/{{p.id}}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.approvedsts}}" name="approvedsts" placeholder="Your Name" required="required" hidden />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.name}}" name="name" placeholder="Your Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Age</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.age}}" name="age" placeholder="Your Age" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for=""> Qualification</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.qualification}}" name="qualification"  placeholder="Your qualification" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subject</label>
+                                    <input type="text" class="form-control border-0 p-4"  value="{{p.subject}}" name="subject"  placeholder="Your subject" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Experiance</label>
+                                    <input type="text" class="form-control border-0 p-4"  value="{{p.experience}}" name="experience"  placeholder="total experiance in year" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Fee/Hour</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.fee}}"  name="fee"  placeholder="tution fee" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Place</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.place}}"  name="place"  placeholder="Your Place" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Mobile Number</label>
+                                    <input type="text" class="form-control border-0 p-4" value="{{p.mobile}}"  name="mobile"  placeholder="Your mobile number" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Email</label>
+                                    <input type="email" class="form-control border-0 p-4" value="{{p.email}}"  name="email"  placeholder="Your Email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input type="password" class="form-control border-0 p-4" value="{{p.password1}}"  name="password1"  placeholder="Password" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Conform Password</label>
+                                    <input type="password" class="form-control border-0 p-4" value="{{p.password2}}"  name="password2"  placeholder="Conform Password" required="required" />
+                                </div>
+                                <div>
+                                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+
+{% include 'footer.html' %}
+{% endblock %}

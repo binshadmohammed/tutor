@@ -1,0 +1,40 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5" align="center">
+        
+          
+                
+                <div class="col-lg-5">
+                    <div class="card border-0" >
+                        <div class="card-header bg-secondary text-center p-4">
+                            <h1 class="text-white m-0">Sign-In</h1>
+                        </div>
+                        <div >
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <form method="POST" action="loguser">
+                                {% csrf_token %}
+                                
+                                <div class="form-group">
+                                    <input type="email" class="form-control border-0 p-4" name="email"  placeholder="Your Email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control border-0 p-4" name="password1"  placeholder="Password" required="required" />
+                                </div>
+                                <div>
+                                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">loguser</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+          
+
+    </div>
+    <!-- Registration End -->
+
+{% include 'footer.html' %}
+{% endblock %}

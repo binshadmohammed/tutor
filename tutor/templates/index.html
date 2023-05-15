@@ -1,0 +1,437 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+{% if request.session.uid %}
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5" >
+        <div class="row align-items-center px-3" >
+            <div class="col-lg-6 text-center text-lg-left" >
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">Find Your Tutor</h4>
+                <h1 class="display-3 font-weight-bold text-white">New Approach to  Education</h1>
+                <p class="text-white mb-4">If you have any doubt in any portion or lesson of your subject You can clear your doubt by booking a tutor near your locality for home tusion.</p>
+                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <img class="img-fluid mt-5" src="{% static 'img/header.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+    <!-- Header End -->
+
+
+
+    <!-- Team Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            
+            <div class="text-center pb-2">
+                
+                <p class="section-title px-5"><span class="px-2">Our Teachers</span></p>
+                <h1 class="mb-4">Meet Our Teachers</h1>
+            </div>
+            <div class="row">
+<!-- search -->  
+<!-- <div class="input-group">
+    <div class="form-outline">
+    <input type="search" id="form1" class="form-control" />
+    <label class="form-label" for="form1">Search</label>
+    </div>
+    <button type="button" class="btn btn-primary" style="width: 100px; height: 38px; border-radius: 0%;">
+    <i class="fas fa-search"></i>
+    </button>
+</div>      -->
+<!-- search end -->
+                {% for i in teacher %}
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                    <a href="{% url 'teacherdetails' id=i.id %}">
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                        <img class="img-fluid w-100" src="../media/{{i.image}}" style="max-height: 250px;" >
+                        <div
+                            class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            
+                        </div>
+                    </div>
+                </a>
+                    <a href="{% url 'teacherdetails' id=i.id %}"><h4>{{i.name}}</h4></a>
+                    <i>{{i.subject}}</i>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container p-0">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Tyooto</span></p>
+                <h1 class="mb-4">Reviews</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+
+                {% for i in review %}
+                <div class="testimonial-item px-3">
+                    <div class="bg-light shadow-sm rounded mb-4 p-4">
+                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                        {{i.message}}
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="{% static 'img/profile.png' %}" style="width: 70px; height: 70px;" alt="Image">
+                        <div class="pl-3">
+                            <h5>{{i.name}}</h5>
+                            <i>{{i.user}}</i>
+                            <i>{{i.r_date}}</i>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+     <!-- comment  Start -->
+     <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-5">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                        <form method="POST" action="adminside/sent_review_student" >
+                            {% csrf_token %}
+                            
+                            
+                            <div class="control-group">
+                                <textarea class="form-control" rows="6" id="message" name="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- comment End -->
+
+
+    
+{% elif request.session.tid %}
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+        <div class="row align-items-center px-3">
+            <div class="col-lg-6 text-center text-lg-left" >
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">Find Your Tutor</h4>
+                <h1 class="display-3 font-weight-bold text-white">New Approach to  Education</h1>
+                <p class="text-white mb-4">If you have any doubt in any portion or lesson of your subject You can clear your doubt by booking a tutor near your locality for home tusion.</p>
+                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <img class="img-fluid mt-5" src="{% static 'img/header.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Facilities Start -->
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-031-bell h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="teacher/t_bookings"> <h4>Notification</h4></a>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="teacher/confirm_bookings"><h4>Confirm Bookings</h4></a>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="teacher/rejected_bookings"><h4>Rejected Bookings</h4></a>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="teacher/teacher_cancelled"><h4>My Cancelations</h4></a>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'tstudent_cancel' %}"><h4>Canceled By student</h4></a>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'show_comments' %}"><h4>Students Comments</h4></a> 
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Start -->
+
+    <!-- comments -->
+    <div class="container-fluid py-5">
+        <div class="container p-0">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Tyooto</span></p>
+                <h1 class="mb-4">Reviews</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+
+                {% for i in review %}
+                <div class="testimonial-item px-3">
+                    <div class="bg-light shadow-sm rounded mb-4 p-4">
+                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                        {{i.message}}
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="{% static 'img/profile.png' %}" style="width: 70px; height: 70px;" alt="Image">
+                        <div class="pl-3">
+                            <h5>{{i.name}}</h5>
+                            <i>{{i.user}}</i>
+                            <i>{{i.r_date}}</i>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- comments -->
+
+     <!-- comment  Start -->
+     <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-5">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                        <form method="POST" action="adminside/sent_review_teacher" >
+                            {% csrf_token %}
+                            
+                            
+                            <div class="control-group">
+                                <textarea class="form-control" rows="6" id="message" name="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- comment End -->
+    
+
+
+    
+
+   
+
+{% elif request.session.admin %}
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+        <div class="row align-items-center px-3">
+            <div class="col-lg-6 text-center text-lg-left">
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
+                <h1 class="display-3 font-weight-bold text-white">New Approach to Kids Education</h1>
+                <p class="text-white mb-4">Education literally means the things a person learns by being taught.
+                    So, the definition of a good education would be the things a person learns by being taught well. But what exactly does that mean? No one has ever told you that, right. To me a good education is basically achieved when a person has a general to specific knowledge of the things that have happened in the world, things that could happen in the future of the world, how to communicate with others, and how to live safely in the world today.....</p>
+                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+            <img class="img-fluid mt-5" src="{% static 'img/header.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Facilities Start -->
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'show_teachers' %}"><h4>Teacher</h4></a>
+                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'show_students' %}"><h4>Students</h4></a>
+                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'show_reviews' %}"><h4>Reviews</h4></a>
+                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+                        <div class="pl-4">
+                            <a href="{% url 'teacher_approved' %}"><h4>teacher approved</h4></a>
+                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Start -->
+
+    
+
+     <!-- Comments -->
+     <div class="container-fluid py-5">
+        <div class="container p-0">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Tyooto</span></p>
+                <h1 class="mb-4">Reviews</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+
+                {% for i in review %}
+                <div class="testimonial-item px-3">
+                    <div class="bg-light shadow-sm rounded mb-4 p-4">
+                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                        {{i.message}}
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="{% static 'img/profile.png' %}" style="width: 70px; height: 70px;" alt="Image">
+                        <div class="pl-3">
+                            <h5>{{i.name}}</h5>
+                            <i>{{i.user}}</i>
+                            <i>{{i.r_date}}</i>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Comments -->
+
+{% else %}
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+        <div class="row align-items-center px-3">
+            <div class="col-lg-6 text-center text-lg-left">
+                <h3 class="text-white mb-4 mt-5 mt-lg-0">Tyooto</h3>
+                <h1 class="display-3 font-weight-bold text-white">New Approach to Kids Education</h1>
+                <p class="text-white mb-4">Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed sit.
+                    Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed ipsum at ipsum nonumy amet. Clita
+                    lorem dolore sed stet et est justo dolore.</p>
+                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <img class="img-fluid mt-5" src="{% static 'img/header.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+  <!-- comments -->
+  <div class="container-fluid py-5">
+    <div class="container p-0">
+        <div class="text-center pb-2">
+            <p class="section-title px-5"><span class="px-2">Tyooto</span></p>
+            <h1 class="mb-4">Reviews</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+
+            {% for i in review %}
+            <div class="testimonial-item px-3">
+                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                    {{i.message}}
+                </div>
+                <div class="d-flex align-items-center">
+                    <img class="rounded-circle" src="{% static 'img/profile.png' %}" style="width: 70px; height: 70px;" alt="Image">
+                    <div class="pl-3">
+                        <h5>{{i.name}}</h5>
+                        <i>{{i.user}}</i>
+                        <i>{{i.r_date}}</i>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<!-- comments End -->
+    
+
+    {% endif %}
+
+{% include 'footer.html' %}
+{% endblock %}
